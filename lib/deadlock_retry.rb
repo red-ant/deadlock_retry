@@ -18,6 +18,9 @@
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+require 'active_record/connection_adapters/mysql2_adapter'
+
 module DeadlockRetry
 
   # How many retries should a query get before finally giving up?
@@ -88,5 +91,4 @@ module DeadlockRetry
   end
 
 end
-
-ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, DeadlockRetry)
+ActiveRecord::ConnectionAdapters::Mysql2Adapter.send(:include, DeadlockRetry)
